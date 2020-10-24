@@ -49,58 +49,6 @@ module.exports = {
           'sass-loader',
         ],
       },
-			// {
-			// 	test: /\.css$/,
-			// 	exclude: '/node-modules/',
-			// 	use: [
-			// 		"style-loader",
-			// 		MiniCssExtractPlugin.loader,
-			// 		{
-			// 			loader: 'css-loader',
-			// 			options: {
-			// 				sourceMap: true,
-			// 			},
-			// 		},
-			// 		{
-			// 			loader: 'postcss-loader',
-			// 			options: {
-			// 				sourceMap: true,
-			// 				config: {
-			// 					path: 'src/js/postcss.config.js'
-			// 				}
-			// 			},
-			// 		},
-			// 	],
-			// },
-			// {
-			// 	test: /\.sass$/,
-			// 	exclude: '/node-modules/',
-			// 	use: [
-			// 		"style-loader",
-			// 		MiniCssExtractPlugin.loader,
-			// 		{
-			// 			loader: 'css-loader',
-			// 			options: {
-			// 				sourceMap: true,
-			// 			},
-			// 		},
-			// 		{
-			// 			loader: 'postcss-loader',
-			// 			options: {
-			// 				sourceMap: true,
-			// 				config: {
-			// 					path: 'src/js/postcss.config.js'
-			// 				}
-			// 			},
-			// 		},
-			// 		{
-			// 			loader: 'sass-loader',
-			// 			options: {
-			// 				sourceMap: true,
-			// 			},
-			// 		},
-			// 	]
-			// },
 			{
 				test: /\.(png|jpe?g|gif)$/,
 				use: [{
@@ -114,10 +62,6 @@ module.exports = {
 				test: /\.(ttf|eot|woff2|woff|svg|png|jpg|gif|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
 				loader: 'file-loader'
 			},
-			// {
-			// 	test: /\.(ttf|woff2?|eot)$/,
-			// 	use: ['file-loader'],
-			// },
 		]
 	},
 	plugins: [
