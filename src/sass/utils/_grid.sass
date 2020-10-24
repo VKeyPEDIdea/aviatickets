@@ -1,0 +1,119 @@
+@import "vars"
+
+.container
+	max-width: 1366px
+	margin: auto
+	padding: 0 20px
+	box-sizing: border-box
+
+.row6
+	display: grid
+	grid-template-columns: repeat(6, 1fr)
+	column-gap: $grid-gap-width
+
+.row4
+	display: grid
+	grid-template-columns: repeat(4, 1fr)
+	column-gap: $grid-gap-width
+
+.row3
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	column-gap: $grid-gap-width
+	grid-row-gap: $grid-gap-width
+
+	.col-2
+		grid-column-start: 2
+		grid-column-end: 4
+
+.row2
+	display: grid
+	grid-template-columns: repeat(2, 1fr)
+	column-gap: $grid-gap-width
+
+.row2--2-1
+	display: grid
+	grid-template-columns: 2fr 1fr
+	column-gap: $grid-gap-width
+	grid-row-gap: $grid-gap-width
+
+	.col-2
+		grid-column-start: 1
+		grid-column-end: 2
+		grid-row-start: 1
+		grid-row-end: 3
+
+	.col-1
+		grid-column-start: 2
+		grid-column-end: 3
+
+.row2--3-1
+	display: grid
+	grid-template-columns: 3fr 1fr
+	column-gap: $grid-gap-width
+	grid-row-gap: $grid-gap-width
+
+	.col-3
+		grid-column-start: 1
+		grid-column-end: 2
+		grid-row-start: 1
+		grid-row-end: 3
+
+	.col-1
+		grid-column-start: 2
+		grid-column-end: 3
+
+.row2--7-5
+	display: grid
+	grid-template-columns: 7fr 5fr
+	column-gap: $grid-gap-width
+
+// Adaptive styles
+// ≥1200px
+// @media (max-width: 1200px)
+	
+
+// ≥992px
+@media (max-width: 992px)
+
+	.row2-lg
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
+		column-gap: $grid-gap-width
+
+	.row2--3-1-lg
+		display: block
+
+// ≥768px
+@media (max-width: 768px)
+
+	.container
+		padding: 10px
+
+	.row2-sm
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
+		column-gap: $grid-gap-width
+
+	.row2--2-1
+		display: block
+
+// ≥576px
+@media (max-width: 576px)
+
+	.row2-sm
+		display: block
+
+//////////////
+
+// <992px
+@media (min-width: 992px)
+
+	.d-none-lg
+		display: none
+
+// <768px
+@media (min-width: 768px)
+
+	.d-none-md
+		display: none
