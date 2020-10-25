@@ -76,7 +76,7 @@ module.exports = {
 	],
   devServer: {
     publicPath: '/',
-    port: 9000,
+    port: 8000,
     contentBase: path.join(__dirname, 'src'),
 		host: 'localhost',
 		watchContentBase: true,
