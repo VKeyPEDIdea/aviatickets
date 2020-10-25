@@ -59,6 +59,11 @@ class Locations {
       return acc;
     }, {});
   }
+
+  async fetchTickets(params) {
+    const response = await this.api.getPrices(params);
+    console.log((response));
+  }
 }
 
 const locations = new Locations(api);
