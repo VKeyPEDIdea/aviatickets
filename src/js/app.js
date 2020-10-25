@@ -1,5 +1,5 @@
+import '../sass/main.sass';  
 import './plugins';
-import '../sass/main.sass';
 import locations from './store/locations';
 
 locations.init().then(res => {
