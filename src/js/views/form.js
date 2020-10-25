@@ -1,6 +1,6 @@
 class FormUI {
   constructor() {
-    this._form = document.forms['departureArrivalData'];
+    this._form = document.forms.departureArrivalData;
     this.departureCityInput = document.getElementById('departure-city');
     this.arrivalCityInput = document.getElementById('arrival-city');
     this.departureTimeInput = document.getElementById('departure-time');
@@ -11,22 +11,23 @@ class FormUI {
 		return this._form;
   }
   
-  get departureCityValue() {
-		return this.departureCity.value;
+  get departureCity() {
+		return this.departureCityInput.value;
 	}
 
-	get arrivalCityValue() {
-		return this.arrivalCity.value;
+	get arrivalCity() {
+		return this.arrivalCityInput.value;
 	}
 
-	get departureTimeValue() {
-		let fullDate = this.departureTime.value;
+	get departureTime() {
+    let fullDate = this.departureTimeInput.value;
+    console.log(fullDate);
 		let value = fullDate.slice(0, 7);
 		return value;
 	}
 
-	get arrivalTimeValue() {
-		let fullDate = this.arrivalTime.value;
+	get arrivalTime() {
+		let fullDate = this.arrivalTimeInput.value;
 		let value = fullDate.slice(0, 7);
 		return value;
 	}

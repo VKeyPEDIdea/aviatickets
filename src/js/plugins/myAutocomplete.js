@@ -10,8 +10,6 @@ class Autocomplete {
 
 			datalist.appendChild(optionList);
 		}
-
-		// return console.log('Сделано');
 	}
 
 	createOptionList(cityList) {

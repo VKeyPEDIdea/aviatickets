@@ -33,6 +33,10 @@ class Locations {
     return this.cities.filter(city => city.country_code === code);
   }
 
+  getCityCodeByKey(key) {
+    return this.cities[key].code;
+  }
+
   serializeCountries(countries) {
     // { 'Country code': { ... } }
     return countries.reduce((acc, country) => {
