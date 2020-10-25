@@ -1,7 +1,6 @@
 import axios from 'axios';
 import config from '../config/apiConfig';
 
-
 /**
  * /countries - array of countries
  * /cities - array of cities
@@ -25,6 +24,16 @@ class Api {
   async getCities() {
     try {
       const response = await axios.get(`${this.url}/cities`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return Promise.reject(error);
+    }
+  }
+
+  async getAirlines() {
+    try {
+      const response = await axios.get(`${this.url}/airlines`);
       return response.data;
     } catch (error) {
       console.log(error);

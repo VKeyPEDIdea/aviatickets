@@ -6,18 +6,22 @@ class Locations {
     this.countries = null;
     this.cities = null;
     this.shortCitiesList = null;
+    this.airlines = null;
   }
 
   async init() {
     const response = await Promise.all([
       this.api.getCountries(),
       this.api.getCities(),
+      this.api.getAirlines(),
     ]);
 
-    const [countries, cities] = response;
+    const [countries, cities, airlines] = response;
     this.countries = this.serializeCountries(countries);
     this.cities = this.serializeCities(cities);
     this.shortCitiesList = this.createShortCitiesList(this.cities);
+    this.airlines = this.serializeAirlines(airlines);
+    console.log(this.airlines);
     
     return response;
   }
@@ -49,6 +53,14 @@ class Locations {
     return this.countries[code].name;
   }
 
+  getAirlineNameByCode(code) {
+    return this.airlines[code] ? this.airlines[code].name : '';
+  }
+
+  getAirlineLogoByCode(code) {
+    return this.airlines[code] ? this.airlines[code].logo : '';
+  }
+
   serializeCities(cities) {
     // { 'City name, country name' : {...}}
     return cities.reduce((acc, city) => {
@@ -56,6 +68,15 @@ class Locations {
       const city_name = city.name || city.name_translations.en;
       const key = `${city_name}, ${country_name}`;
       acc[key] = city;
+      return acc;
+    }, {});
+  }
+
+  serializeAirlines(airlines) {
+    return airlines.reduce((acc, line) => {
+      line.logo = `http://pics.avs.io/200/200/${line.code}.png`;
+      line.name = line.name || line.name_translations.en;
+      acc[line.code] = line;
       return acc;
     }, {});
   }

@@ -21,7 +21,6 @@ class FormUI {
 
 	get departureTime() {
     let fullDate = this.departureTimeInput.value;
-    console.log(fullDate);
 		let value = fullDate.slice(0, 7);
 		return value;
 	}
