@@ -3,6 +3,7 @@ import './plugins';
 import myAutocomplete from './plugins/myAutocomplete';
 import locations from './store/locations';
 import formUI from './views/form';
+import ticketsUI from './views/tickets';
 import currencyUI from './views/currency';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,5 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return_date,
       currency,
     });
+
+    ticketsUI.renderTickets(locations.lastSearch);
   }
 }); 
