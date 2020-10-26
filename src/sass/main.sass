@@ -1,0 +1,224 @@
+@import 'utils/libs'
+@import 'utils/config'
+
+.d-none
+	display: none
+
+// Header
+.header
+	padding: 20px 40px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	border-bottom: 1px solid $extra
+	margin-bottom: 40px
+
+	&__logo
+		display: block
+		font-family: $mainFont
+		text-transform: uppercase
+		text-decoration: none
+		font-size: 20px
+		font-weight: 700
+		color: $text
+
+// select custom styles start
+.select-custom
+	min-width: 200px
+	position: relative
+
+	&__value, &__list
+		border-radius: $border-rs
+		border: 1px solid $extra
+	
+	&__value, &__option
+		padding: 8px 12px
+		cursor: pointer
+
+	&__value
+
+		&:focus
+			background: $surface
+	
+	&__arrow
+		position: absolute
+		right: 4px
+		top: 6px
+
+	&__list
+		position: absolute
+		background: $surface
+		min-width: 200px
+		top: calc(100% - 1px)
+		padding: 0
+		margin: 0
+
+	&__option
+		border-radius: $border-rs
+
+		&:hover
+			background: $extraLight
+			cursor: pointer
+// select custom styles end
+
+// Input custom styles start
+
+.input
+	font-family: $Mont-e
+	margin-bottom: 20px
+
+	label
+		font-size: 12px
+		display: block
+		margin-bottom: 8px
+
+	input
+		display: block
+		border: 1px solid $extra
+		border-radius: $border-rs
+		font-size: 14px
+		line-height: 16px
+		height: 16px
+		padding: 8px 12px
+
+	&-date
+
+	&-text
+
+// Input custom styles end
+
+// Form
+.section
+
+	&-form
+		margin-bottom: 40px
+		
+		.form
+
+			&-wrapper
+				margin: auto
+				max-width: 768px
+				background: #f2f2f2
+				padding: 40px 60px
+				border-radius: $border-rs
+				border: 1px solid $extra
+
+// btn styles start
+.btn
+	text-transform: uppercase
+	text-decoration: none
+	font-family: $Mont-e
+	border-radius: $border-rs
+	transition: $st-trans
+	cursor: pointer
+	border: none
+
+	&--md
+		padding: 11px 16px 
+		font-size: 14px
+		font-weight: 600
+		line-height: 18px
+	
+	&--icon
+		padding: 8px
+		font-size: 24px
+		font-family: 'Material'
+		line-height: 24px
+
+	&--transparent
+		color: $text-secondary
+
+		&:hover
+			background-color: $extraLight
+			color: $onBackground
+
+	&--access
+		background-color: $blue
+		color: $white
+
+		&:hover
+			background-color: darken($blue, 10%)
+			color: $white
+
+	&--cancel
+		background-color: $red
+		color: $white
+
+		&:hover
+			background-color: darken($red, 10%)
+			color: $white
+// btn styles end
+
+// section tickets styles start
+.section-tickets
+	.tickets-not-found-msg
+		text-align: center
+		padding: 60px 80px
+		border-radius: $border-rs
+		border: 1px solid $extra
+		font-size: 20px
+		margin-bottom: 40px
+
+	.tickets-container
+
+		.card
+			border: 1px solid $extra
+			padding: 40px 60px
+
+		.ticket
+			font-family: $Mont-e
+			margin-bottom: 20px
+
+			&-airline
+				display: flex
+				align-items: center
+				margin-bottom: 20px
+				
+				&__img
+					border-radius: 2px
+					object-fit: cover
+					max-height: 40px
+					width: 60px
+					border: 1px solid $extra
+					margin-right: 12px
+
+				&__name
+					font-size: 14px
+
+			.subtitle
+				color: $altOnBackground
+				font-size: 12px
+				text-transform: uppercase
+				font-weight: 500
+				margin-bottom: 4px
+
+				&-value
+					font-size: 24px
+					font-weight: 600
+					margin-bottom: 4px
+				
+			&-destination
+				display: flex
+				justify-content: space-between
+				margin-bottom: 40px
+
+				.ticket-city
+					font-size: 24px
+					font-weight: 600
+					margin-bottom: 20px
+
+				&-departure
+
+					&-time
+						font-size: 14px
+						text-transform: uppercase
+						color: $altOnBackground
+
+			&-additional-info
+				display: flex
+
+			&-transfers, &-flight-number
+				margin-right: 40px
+
+
+// section tickets styles end

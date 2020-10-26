@@ -1,0 +1,35 @@
+@import 'vars.sass'
+
+::placeholder
+	color: $extra
+
+::selection
+	background-color: $primary
+	color: $ink
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body
+	background-color: $background
+	font-family: $PTS
+	font-size: $fontsize
+	min-width: 320px
+	position: relative
+	overflow-x: hidden
+	color: $onBackground
+	transition: $st-trans
+
+img
+	border-radius: $border-2x
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%

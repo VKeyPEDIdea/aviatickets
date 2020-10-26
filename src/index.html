@@ -6,6 +6,119 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Aviaticket</h1>
+	<div class="container">
+
+		<!-- Header -->
+		<nav class="header">
+			<a href="#" class="logo header__logo">AviaTickets</a>
+			<div class="select-custom">
+				<div class="select-custom__value" id="currency">USD</div>
+				<div class="select-custom__arrow">
+					<i class="material-icons">arrow_drop_down</i>
+				</div>
+				<ul class="select-custom__list d-none">
+					<li class="select-custom__option">USD</li>
+					<li class="select-custom__option">EUR</li>
+				</ul>
+			</div>
+		</nav>
+
+		<section class="section-form">
+			<div class="form-wrapper">
+				<form action="GET" class="main-form" name='departureArrivalData'>
+
+					<div class="row2">
+
+						<!-- column -->
+						<div class="column">
+
+							<!-- Input text -->
+							<div class="input input-text my-autocomplete">
+								<label for="departure-city">Город отправки</label>
+								<input list="departure-city-list" name="departure-city" id="departure-city">
+								<datalist id="departure-city-list">
+									<option value="Караганда"></option>
+								</datalist>
+							</div>
+
+							<!-- Input date -->
+							<div class="input input-date">
+								<label for="departure-time">Дата отправки</label>
+								<input type="date" name="departure-time" id="departure-time">
+							</div>
+
+						</div>
+
+						<!-- column -->
+						<div class="column">
+
+							<!-- Input text -->
+							<div class="input input-text my-autocomplete">
+								<label for="arrival-city">Город прибытия</label>
+								<input list="arrival-city-list" name="arrival-city" id="arrival-city">
+								<datalist id="arrival-city-list">
+									<option value="Караганда"></option>
+								</datalist>
+							</div>
+
+							<!-- Input date -->
+							<div class="input input-date">
+								<label for="arrival-time">Дата прибытия</label>
+								<input type="date" name="arrival-time" id="arrival-time">
+							</div>
+
+						</div>
+					</div>
+
+					<button class="btn btn--access btn--md" type="submit" name="search">Искать</button>
+					<button class="btn btn--cancel btn--md" type="reset" name="reset">Сбросить</button>
+
+				</form>
+			</div>
+		</section>
+
+		<section class="section-tickets">
+			<!-- <div class="tickets-not-found-msg">
+				Билеты не найдены по вашему запросу
+			</div> -->
+
+			<div class="tickets-container">
+
+				<!-- Ticket -->
+				<!-- <div class="card ticket">
+					<div class="ticket-destination">
+						<div class="ticket-destination-departure">
+							<p class="subtitle">Отправка</p>
+							<p class="ticket-city">Харьков</p>
+							<p class="ticket-destination-departure-time">14 Sep 2019 02:30</p>
+						</div>
+						<div class="ticket-destination-arrival">
+							<p class="subtitle">Прибытие</p>
+							<p class="ticket-city">Львов</p>
+						</div>
+						<div class="ticket-airline">
+							<img src="http://pics.avs.io/200/200/PS.png" class="ticket-airline__img" />
+							<span class="ticket-airline__name">Ukraine International airlines</span>
+						</div>
+					</div>
+					<div class="ticket-additional-info">
+						<div class="ticket-transfers">
+							<div class="subtitle-value">1</div>
+							<div class="subtitle">Пересадок</div>
+						</div>
+						<div class="ticket-flight-number">
+							<div class="subtitle-value">26</div>
+							<div class="subtitle">Номер рейса</div>
+						</div>
+						<div class="ticket-price">
+							<div class="subtitle-value">$315</div>
+							<div class="subtitle">Стоимость</div>
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</section>
+
+	</div>
 </body>
 </html>
