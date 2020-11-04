@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
   "browserslist": [
     "> 1%",
@@ -30,6 +32,12 @@
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "date-fns": "^2.16.1",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.1.1",
     "html-webpack-plugin": "^4.5.0",
@@ -37,6 +45,7 @@
     "node-sass": "^4.14.1",
     "path": "^0.12.7",
     "postcss-loader": "^4.0.4",
+    "prettier": "^2.1.2",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "webpack": "^4.44.0",

@@ -1,4 +1,4 @@
-import '../sass/main.sass';  
+import '../sass/main.sass';
 import './plugins';
 import myAutocomplete from './plugins/myAutocomplete';
 import locations from './store/locations';
@@ -39,4 +39,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ticketsUI.renderTickets(locations.lastSearch);
   }
-}); 
+});
