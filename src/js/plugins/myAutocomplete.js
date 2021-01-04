@@ -1,30 +1,28 @@
 class Autocomplete {
-	constructor() {}
-
 	initAutocomplete(cityList) {
 		const autocompleteInputList = document.getElementsByClassName('my-autocomplete');
 
-		for (let input of autocompleteInputList) {
-			let datalist = input.querySelector('datalist');
-			let optionList = this.createOptionList(cityList);
+		Object.keys(autocompleteInputList).forEach(input => {
+			const datalist = autocompleteInputList[input].querySelector('datalist');
+			const optionList = this.createOptionList(cityList);
 
 			datalist.appendChild(optionList);
-		}
+		});
 	}
 
 	createOptionList(cityList) {
-		let optionListFragment = document.createDocumentFragment();
+		const optionListFragment = document.createDocumentFragment();
 
-		for (let city in cityList) {
-			let option = this.createOptionElement(city);
+		Object.keys(cityList).forEach(city => {
+			const option = this.createOptionElement(city);
 			optionListFragment.appendChild(option);
-		}
+		});
 
 		return optionListFragment;
 	}
 
 	createOptionElement(city) {
-		let option = document.createElement('option');
+		const option = document.createElement('option');
 		option.value = city;
 
 		return option;

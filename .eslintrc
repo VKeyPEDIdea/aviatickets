@@ -9,11 +9,16 @@
     "no-plusplus": "off",
     "eol-last": "off",
     "max-len": ["error", 150, {"ignoreUrls": true}],
-    "prefer-destructuring": "warn",
+    "prefer-destructuring": "off",
     "no-use-before-define": "off",
     "linebreak-style": "off",
     "camelcase": "warn",
     "no-param-reassign": "off",
-    "no-tabs": "off"
+    "no-tabs": "off",
+    "indent": "off",
+    "import/prefer-default-export": "off",
+    "arrow-parens": "off",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off"
   }
 }

@@ -1,53 +1,53 @@
 import currencyUI from './currency';
 
 class TicketsUI {
-  constructor(currency) {
-    this.container = document.querySelector('.tickets-container');
-    this.getCurrencySymbol = currency.getCurrencySymbol.bind(currency);
-  }
+	constructor(currency) {
+		this.container = document.querySelector('.tickets-container');
+		this.getCurrencySymbol = currency.getCurrencySymbol.bind(currency);
+	}
 
-  renderTickets(tickets) {
-    this.clearContainer();
-    
-    if (!tickets.length) {
-      this.showEmptyMessage();
-      return;
-    }
+	renderTickets(tickets) {
+		this.clearContainer();
 
-    let fragment = '';
+		if (!tickets.length) {
+			this.showEmptyMessage();
+			return;
+		}
 
-    const currency = this.getCurrencySymbol();
+		let fragment = '';
 
-    tickets.forEach(ticket => {
-      const template = TicketsUI.ticketTemplate(ticket, currency);
-      fragment += template;
-    });
-    
-    this.container.insertAdjacentHTML('afterbegin', fragment);
-  }
+		const currency = this.getCurrencySymbol();
 
-  clearContainer() {
-    this.container.innerHTML = '';
-  }
+		tickets.forEach((ticket) => {
+			const template = TicketsUI.ticketTemplate(ticket, currency);
+			fragment += template;
+		});
 
-  showEmptyMessage() {
-    const template = TicketsUI.emptyMsgTemplate();
-    this.container.insertAdjacentElement('afterbegin', template);
-  }
+		this.container.insertAdjacentHTML('afterbegin', fragment);
+	}
 
-  static emptyMsgTemplate() {
-    let fragment = document.createDocumentFragment();
+	clearContainer() {
+		this.container.innerHTML = '';
+	}
 
-    let div = document.createElement('div');
-    div.classList.add('tickets-not-found-msg');
-    div.textContent = 'Билеты не найдены по вашему запросу';
+	showEmptyMessage() {
+		const template = TicketsUI.emptyMsgTemplate();
+		this.container.insertAdjacentElement('afterbegin', template);
+	}
 
-    fragment.appendChild(div);
-    return div;
-  }
+	static emptyMsgTemplate() {
+		const fragment = document.createDocumentFragment();
 
-  static ticketTemplate(ticket, currencySymbol) {
-    return `
+		const div = document.createElement('div');
+		div.classList.add('tickets-not-found-msg');
+		div.textContent = 'Билеты не найдены по вашему запросу';
+
+		fragment.appendChild(div);
+		return div;
+	}
+
+	static ticketTemplate(ticket, currencySymbol) {
+		return `
     <div class="card ticket">
       <div class="ticket-destination">
         <div class="ticket-destination-departure">
@@ -80,7 +80,7 @@ class TicketsUI {
       </div>
     </div>
     `;
-  }
+	}
 }
 
 const ticketsUI = new TicketsUI(currencyUI);

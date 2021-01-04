@@ -31,7 +31,6 @@
     "css-loader": "^5.0.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
-    "date-fns": "^2.16.1",
     "eslint": "^7.12.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.15.0",
@@ -54,6 +53,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "date-fns": "^2.16.1",
     "jshint": "^2.12.0",
     "postcss": "^8.1.4"
   },

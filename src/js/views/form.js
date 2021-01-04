@@ -1,17 +1,17 @@
 class FormUI {
-  constructor() {
-    this._form = document.forms.departureArrivalData;
-    this.departureCityInput = document.getElementById('departure-city');
-    this.arrivalCityInput = document.getElementById('arrival-city');
-    this.departureTimeInput = document.getElementById('departure-time');
-    this.arrivalTimeInput = document.getElementById('arrival-time');
-  }
+	constructor() {
+		this._form = document.forms.departureArrivalData;
+		this.departureCityInput = document.getElementById('departure-city');
+		this.arrivalCityInput = document.getElementById('arrival-city');
+		this.departureTimeInput = document.getElementById('departure-time');
+		this.arrivalTimeInput = document.getElementById('arrival-time');
+	}
 
-  get form() {
+	get form() {
 		return this._form;
-  }
-  
-  get departureCity() {
+	}
+
+	get departureCity() {
 		return this.departureCityInput.value;
 	}
 
@@ -20,14 +20,14 @@ class FormUI {
 	}
 
 	get departureTime() {
-    let fullDate = this.departureTimeInput.value;
-		let value = fullDate.slice(0, 7);
+		const fullDate = this.departureTimeInput.value;
+		const value = fullDate.slice(0, 7);
 		return value;
 	}
 
 	get arrivalTime() {
-		let fullDate = this.arrivalTimeInput.value;
-		let value = fullDate.slice(0, 7);
+		const fullDate = this.arrivalTimeInput.value;
+		const value = fullDate.slice(0, 7);
 		return value;
 	}
 }

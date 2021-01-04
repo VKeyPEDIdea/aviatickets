@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../config/apiConfig';
+import { config as conf } from '../config/apiConfig';
 
 /**
  * /countries - array of countries
@@ -7,54 +7,51 @@ import config from '../config/apiConfig';
  * /prices/cheap - array
  */
 class Api {
-  constructor(config) {
-    this.url = config.url;
-  }
+	constructor(config) {
+		this.url = config.url;
+	}
 
-  async getCountries() {
-    try {
-      const response = await axios.get(`${this.url}/countries`);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return Promise.reject(error);
-    }
-  }
+	async getCountries() {
+		try {
+			const response = await axios.get(`${this.url}/countries`);
+			return response.data;
+		} catch (error) {
+			console.warn(error);
+			return Promise.reject(error);
+		}
+	}
 
-  async getCities() {
-    try {
-      const response = await axios.get(`${this.url}/cities`);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return Promise.reject(error);
-    }
-  }
+	async getCities() {
+		try {
+			const response = await axios.get(`${this.url}/cities`);
+			return response.data;
+		} catch (error) {
+			console.warn(error);
+			return Promise.reject(error);
+		}
+	}
 
-  async getAirlines() {
-    try {
-      const response = await axios.get(`${this.url}/airlines`);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return Promise.reject(error);
-    }
-  }
+	async getAirlines() {
+		try {
+			const response = await axios.get(`${this.url}/airlines`);
+			return response.data;
+		} catch (error) {
+			console.warn(error);
+			return Promise.reject(error);
+		}
+	}
 
-  async getPrices(params) {
-    try {
-      const response = await axios.get(`${this.url}/prices/cheap`, {
-        params,
-      });
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return Promise.reject(error);
-    }
-  }
-
+	async getPrices(params) {
+		try {
+			const response = await axios.get(`${this.url}/prices/cheap`, {
+				params,
+			});
+			return response.data;
+		} catch (error) {
+			console.warn(error);
+			return Promise.reject(error);
+		}
+	}
 }
 
-const api = new Api(config);
-
-export default api;
+export const api = new Api(conf);

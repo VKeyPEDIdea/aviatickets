@@ -1,118 +1,115 @@
-import api from '../services/apiService';
-import {formatDate} from '../helpers/date';
+import { api as API } from '../services/apiService';
+import { formatDate } from '../helpers/date';
 
 class Locations {
-  constructor(api, helpers) {
-    this.api = api;
-    this.countries = null;
-    this.cities = null;
-    this.shortCitiesList = null;
-    this.airlines = null;
-    this.formatDate = helpers.formatDate;
-  }
+	constructor(api, helpers) {
+		this.api = api;
+		this.countries = null;
+		this.cities = null;
+		this.shortCitiesList = null;
+		this.airlines = null;
+		this.formatDate = helpers.formatDate;
+	}
 
-  async init() {
-    const response = await Promise.all([
-      this.api.getCountries(),
-      this.api.getCities(),
-      this.api.getAirlines(),
-    ]);
+	async init() {
+		const response = await Promise.all([
+			this.api.getCountries(),
+			this.api.getCities(),
+			this.api.getAirlines(),
+		]);
 
-    const [countries, cities, airlines] = response;
-    this.countries = this.serializeCountries(countries);
-    this.cities = this.serializeCities(cities);
-    this.shortCitiesList = this.createShortCitiesList(this.cities);
-    this.airlines = this.serializeAirlines(airlines);
-    
-    return response;
-  }
+		const [countries, cities, airlines] = response;
+		this.countries = this.serializeCountries(countries);
+		this.cities = this.serializeCities(cities);
+		this.shortCitiesList = this.createShortCitiesList(this.cities);
+		this.airlines = this.serializeAirlines(airlines);
 
-  createShortCitiesList(cities) {
-    return Object.entries(cities).reduce((acc, [, city]) => {
-      acc[city.full_name] = null;
-      return acc;
-    }, {});
-  }
+		return response;
+	}
 
-  getCityNameByCode(code) {
-    return this.cities[code].name;
-  }
+	createShortCitiesList(cities) {
+		return Object.entries(cities).reduce((acc, [, city]) => {
+			acc[city.fullName] = null;
+			return acc;
+		}, {});
+	}
 
-  getCitiesByCountryCode(code) {
-    return this.cities.filter(city => city.country_code === code);
-  }
+	getCityNameByCode(code) {
+		return this.cities[code].name;
+	}
 
-  getCityCodeByKey(key) {
-    const city = Object.values(this.cities).find((item) => item.full_name === key);
-    return city.code;
-  }
+	getCitiesByCountryCode(code) {
+		return this.cities.filter((city) => city.country_code === code);
+	}
 
-  serializeCountries(countries) {
-    // { 'Country code': { ... } }
-    return countries.reduce((acc, country) => {
-      acc[country.code] = country;
-      return acc;
-    }, {});
-  }
+	getCityCodeByKey(key) {
+		const city = Object.values(this.cities).find((item) => item.fullName === key);
+		return city.code;
+	}
 
-  getCountryNameByCode(code) {
-    return this.countries[code].name;
-  }
+	serializeCountries(countries) {
+		// { 'Country code': { ... } }
+		return countries.reduce((acc, country) => {
+			acc[country.code] = country;
+			return acc;
+		}, {});
+	}
 
-  getAirlineNameByCode(code) {
-    return this.airlines[code] ? this.airlines[code].name : '';
-  }
+	getCountryNameByCode(code) {
+		return this.countries[code].name;
+	}
 
-  getAirlineLogoByCode(code) {
-    return this.airlines[code] ? this.airlines[code].logo : '';
-  }
+	getAirlineNameByCode(code) {
+		return this.airlines[code] ? this.airlines[code].name : '';
+	}
 
-  serializeCities(cities) {
-    // { 'City name, country name' : {...}}
-    return cities.reduce((acc, city) => {
-      const country_name = this.getCountryNameByCode(city.country_code);
-      city.name = city.name || city.name_translations.en;
-      const city_name = city.name || city.name_translations.en;
-      const full_name = `${city_name}, ${country_name}`;
-      acc[city.code] = {
-        ...city,
-        country_name,
-        full_name,
-      };
-      return acc;
-    }, {});
-  }
+	getAirlineLogoByCode(code) {
+		return this.airlines[code] ? this.airlines[code].logo : '';
+	}
 
-  serializeAirlines(airlines) {
-    return airlines.reduce((acc, line) => {
-      line.logo = `http://pics.avs.io/200/200/${line.code}.png`;
-      line.name = line.name || line.name_translations.en;
-      acc[line.code] = line;
-      return acc;
-    }, {});
-  }
+	serializeCities(cities) {
+		// { 'City name, country name' : {...}}
+		return cities.reduce((acc, city) => {
+			const countryName = this.getCountryNameByCode(city.country_code);
+			city.name = city.name || city.name_translations.en;
+			const cityName = city.name || city.name_translations.en;
+			const fullName = `${cityName}, ${countryName}`;
+			acc[city.code] = {
+				...city,
+				countryName,
+				fullName,
+			};
+			return acc;
+		}, {});
+	}
 
-  async fetchTickets(params) {
-    const response = await this.api.getPrices(params);
-    this.lastSearch = this.serializeTickets(response.data);
-    console.log(this.lastSearch);
-  }
+	serializeAirlines(airlines) {
+		return airlines.reduce((acc, line) => {
+			line.logo = `http://pics.avs.io/200/200/${line.code}.png`;
+			line.name = line.name || line.name_translations.en;
+			acc[line.code] = line;
+			return acc;
+		}, {});
+	}
 
-  serializeTickets(tickets) {
-    return Object.values(tickets).map(ticket => {
-      return {
-        ...ticket,
-        departure_name: this.getCityNameByCode(ticket.origin),
-        arrival_name: this.getCityNameByCode(ticket.destination),
-        airline_logo: this.getAirlineLogoByCode(ticket.airline),
-        airline_name: this.getAirlineNameByCode(ticket.airline),
-        departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy hh:mm'),
-        arrival_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm'),
-      };
-    });
-  }
+	async fetchTickets(params) {
+		const response = await this.api.getPrices(params);
+		this.lastSearch = this.serializeTickets(response.data);
+	}
+
+	serializeTickets(tickets) {
+		return Object.values(tickets).map((ticket) => ({
+			...ticket,
+			departure_name: this.getCityNameByCode(ticket.origin),
+			arrival_name: this.getCityNameByCode(ticket.destination),
+			airline_logo: this.getAirlineLogoByCode(ticket.airline),
+			airline_name: this.getAirlineNameByCode(ticket.airline),
+			departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy hh:mm'),
+			arrival_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm'),
+		}));
+	}
 }
 
-const locations = new Locations(api, {formatDate});
+const locations = new Locations(API, { formatDate });
 
 export default locations;
